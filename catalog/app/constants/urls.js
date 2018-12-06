@@ -14,5 +14,5 @@ export const jobs = 'https://quilt-data.breezy.hr/';
 export const slackInvite = 'https://slack.quiltdata.com/';
 export const pipGit = `git+${git}`;
 export const icon256 = 'https://d1zvn9rasera71.cloudfront.net/q-256-square.png';
-export const tutorial = 'https://github.com/quiltdata/quilt/blob/master/README.md#tutorial';
+export const tutorial = 'https://github.com/quiltdata/quilt/blob/master/Deployment.md#tutorial';
 export const twitter = 'https://twitter.com/quiltdata';

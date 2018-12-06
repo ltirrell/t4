@@ -57,7 +57,7 @@ your AWS account.
     <br/>
     <br/>
 
-    ![](./img/start.png)
+    ![](../deployment/img/start.png)
   
 1. Click "Upload a template to Amazon S3" and select `t4.yaml`, provided to
 you by Quilt
@@ -66,7 +66,7 @@ you by Quilt
     <br/>
     <br/>
 
-    ![](./img/params.png)
+    ![](../deployment/img/params.png)
 
 > Carefully note parameter descriptions to avoid stack failure
 1. Click Next
@@ -74,13 +74,13 @@ you by Quilt
     <br/>
     <br/>
 
-    ![](./img/skip.png)
+    ![](../deployment/img/skip.png)
 
 1. Acknowledge that CloudFormation may create IAM roles
     <br/>
     <br/>
 
-    ![](./img/finish.png)
+    ![](../deployment/img/finish.png)
 
 1. Click Create (typically takes 30 minutes to complete)
 
@@ -92,7 +92,7 @@ by you in the following step.
     <br/>
     <br/>
 
-    ![](./img/outputs.png)
+    ![](../deployment/img/outputs.png)
 
 1. If desired, set a `CNAME` record with your DNS service that points to your CloudFrontDomain. The `CNAME` must also be present in your [CORS policy](#pre-requisites). Now users can access the T4 catalog at your custom
 `CNAME`.
