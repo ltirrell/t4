@@ -37,6 +37,6 @@ T4 is alpha software. It is not yet recommended for production use.
 * `/api/python` - Read, write, and annotate Python objects in S3
 
 ## Documentation
-* [User docs](docs/UserDocs.md)
+* [User docs](ZZZ/UserDocs.md)
 * [Developer docs](./DeveloperDocs.md)
 
