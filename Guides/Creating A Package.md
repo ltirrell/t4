@@ -20,11 +20,11 @@ p = p.set("bar.csv", "s3://bucket/path/to/cloud/bar.csv")
 p = p.set_dir("stuff/", "/path/to/folder/with/stuff/")
 ```
 
+The first parameter to these functions is the **logical key**— where the file lives *within* the package. The second is the **physical key**—where the file is actually located.
+
 Packages currently support two kinds of entries: local files, and S3 objects. To add an S3 object to a package, as above, use the `s3://<NAME>` prefix, where `<NAME>` is the name of your S3 bucket. Local files do not need a prefix, but may optionally be prefixed with `file:///`.
 
-The first parameter to both `set` and `set_dir` is the **logical key**: where the file lives *within* the package. The second is the **physical key**: where the file is actually located.
-
-To add many files at once, use the `update` command, which specifies package entries as logical key-physical key key-value pairs:
+You can also add multiple files at once using `update`:
 
 ```python
 # add many entries at once using `update`
