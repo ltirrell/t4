@@ -1,3 +1,22 @@
+## Finding
+Before you can install a package you need to know that it exists, and how to get it.
+
+As explained in ["Building a Package"](Building%20a%20Package.md), packages are managed using **registries**. There is a one local registry on your machine, and potentially many remote registries elsewhere "in the world".
+
+Use `list_packages` to see which packages are available where. `list_packages` works on local and remote registries alike:
+
+```
+$ python
+>>> import t4
+
+>>> t4.list_packages()  # list local packages
+<<< ["username/packagename", "otherusername/otherpackagename"]
+
+>>> t4.list_packages("s3://my-bucket")  # list remote packages
+<<< ["user1/seattle-weather", "user2/new-york-ballgames", ...]
+```
+
+
 ## Installing
 
 To make a remote package and all of its data available locally, `install` it.
@@ -13,7 +32,7 @@ p = t4.Package.install(
 
 `install` starts by downloading the **package manifest**&mdash;essentially a `list` of things in the package. It then takes each file referenced by the package and downloads it to your `dest`.
 
-Once you `install` a remote package it becomes a local package, available in your local registry (for more on registries see ["Building a Package"](Building%20a%20Package.md)).
+Once you `install` a remote package it becomes a local package, available in your local registry.
 
 ## Browsing
 To open a local package, use `browse`:
