@@ -11,7 +11,7 @@ p = t4.Package.install(
 
 `install` starts by downloading the **package manifest**&mdash;essentially a `list` of things in the package. It then takes each file referenced by the package and downloads it to your `dest`.
 
-Once you install a remote package it becomes a local package, available in your local registry (to learn more about registries, see the section ["Building A Package"](./Building A Package.md)).
+Once you `install` a remote package it becomes a local package, available in your local registry (for more on registries see ["Building A Package"](./Building A Package.md)).
 
 To open a local package, use `browse`:
 
@@ -28,4 +28,4 @@ p = t4.Package.browse("username/packagename", registry="s3://name-of-your-bucket
 
 `browse` opens (if necessary, downloads) a package manifest. It does not move any data. This is advantageous (over `install`) when you don't want to download a large package all at once; you just want to see what's inside it.
 
-To learn how to introspect a package see the next section: [Inspecting A Package](./Inspecting A Package.md).
+To learn how to introspect a package see the next section: [Inspecting A Package](Introspecting%20A%20Package.md).
