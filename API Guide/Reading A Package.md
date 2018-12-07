@@ -11,6 +11,8 @@ p = (t4.Package()
     )
 ```
 
+
+## Selection
 To dig into a package tree:
 
 ```
@@ -25,6 +27,8 @@ $ python
 
 Slicing into a `Package` directory returns another `Package` rooted at that subdirectory. Slicing into a package entry returns an individual `PackageEntry`.
 
+
+## Downloading to a file
 To download a subset of files from a package directory to a `dest`, use `fetch`:
 
 ```python
@@ -38,17 +42,29 @@ p["commodities"]["gold.csv"].fetch("<dest>")
 p.fetch("<dest>")
 ```
 
+
+## Downloading into memory
 Alternatively, you can download data directly into memory using `deserialize`:
 
 ```
 $ python
->>> df = p["commodities"]["gold.csv"]()
->>> df
+>>> p["commodities"]["gold.csv"].deserialize()
+<<< <pandas.DataFrame object at ...>
+
+>>> p["commodities"]["gold.csv"]()  # sugar
 <<< <pandas.DataFrame object at ...>
 ```
 
-Finally, to read the metadata for a file or folder use `get_meta`:
+## Reading metadata
+Finally, to read the metadata for a file, folder, or package use `get_meta`:
 
 ```python
+# get entry metadata
 p["commodities"]["gold.csv"].get_meta()
+
+# get folder metadata
+p["commodities"].get_meta()
+
+# get package metadata
+p.get_meta()
 ```

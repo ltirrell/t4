@@ -1,5 +1,3 @@
-## Setting data
-
 Data in T4 is organized in terms of **packages**. A package is a logical group of files, directories, and metadata that are meaningful.
 
 To create a new package in Python, start by creating a new `Package` object:
@@ -10,6 +8,8 @@ import t4
 p = t4.Package()
 ```
 
+
+## Setting data
 Use the `set` and `set_dir` commands to add individual files and whole directories, respectively, to the `Package`:
 
 ```python
