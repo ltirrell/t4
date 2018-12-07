@@ -3,8 +3,6 @@
 * [Introduction](Introduction.md)
 * [Quickstart](Quickstart.md)
 
-----
-
 ### Walkthrough
 
 * [Creating a Package](Walkthrough/Creating a Package.md)
@@ -16,6 +14,7 @@
 
 ### Advanced Features
 * [Materialization](Advanced%20Features/Materialization.md)
+
 
 ----
 
