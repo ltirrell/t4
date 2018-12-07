@@ -12,11 +12,10 @@
 * [Reading a Package](Walkthrough/Reading a Package.md)
 * [Working with a Bucket](Walkthrough/Working with a Bucket.md)
 
-### Advanced Features
+### Advanced Usage
 * [Materialization](Advanced%20Features/Materialization.md)
 
-
-----
+### References
 
 * [API Reference](API Reference.md)
 * [Glossary](Glossary.md)
