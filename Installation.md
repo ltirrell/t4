@@ -1,4 +1,11 @@
-## Client
+T4 has two different components:
+* a Python package, distributed via `pip`
+* a web catalog, deployed using [AWS CloudFormation](https://aws.amazon.com/cloudformation/)
+
+You can use the `t4` package without standing up a catalog, but requires 
+
+
+## Installing the Python package
 
 Install the latest stable release of the T4 Python library with `pip`:
 
@@ -9,16 +16,16 @@ pip install t4
 Note that `t4` requires Python 3.6 or higher.
 
 
-## Catalog
+## Deploying the catalog
 The Quilt T4 catalog is based on top of S3. We use [AWS CloudFormation](https://aws.amazon.com/cloudformation/) to provision the service.
 
 The following instructions use CloudFormation to install T4 on a bucket in your AWS account.
 
-1. Log in to your AWS console
+* Log in to your AWS console
 
-1. Go to Services > CloudFormation > Create stack
+* Go to Services > CloudFormation > Create stack
 
-<img src="../deployment/img/start.png" width="400" />
+<img src="../deployment/img/start.png" />
   
 1. Click "Upload a template to Amazon S3" and select `t4.yaml`, provided to
 you by Quilt
