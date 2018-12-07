@@ -21,4 +21,4 @@
 * [API Reference](API Reference.md)
 * [Glossary](Concepts.md)
 * [Contributing](CONTRIBUTING.md)
-* [Further reading](Further%20Reading.md)
+* [Further Reading](Further Reading.md)
