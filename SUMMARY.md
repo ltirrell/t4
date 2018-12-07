@@ -18,6 +18,6 @@
 ### References
 
 * [API Reference](API Reference.md)
-* [Glossary](Glossary.md)
+* [Glossary](Concepts.md)
 * [Contributing](CONTRIBUTING.md)
-* [Further reading](Further reading.md)
+* [Further reading](Further%20Reading.md)
