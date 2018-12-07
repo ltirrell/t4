@@ -25,3 +25,5 @@ import t4
 p = t4.Package("example.csv", "example.csv")
 p.build("username/packagename", registry="s3://my-bucket")
 ```
+
+Note that in this case it is up to you, the package author, to ensure that any local files in the package remain available and accessible to users.
