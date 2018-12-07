@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](Introduction.md)
+* [Introduction](README.md)
 * [Quickstart](Quickstart.md)
 
 ### Walkthrough
