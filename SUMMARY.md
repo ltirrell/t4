@@ -1,12 +1,25 @@
 # Summary
 
-* [README](README.md)
+* [Introduction](Introduction.md)
+* [Quickstart](Quickstart.md)
 
-### API Guide
+----
 
-* [Creating a Package](./API Guide/Creating a Package.md)
-* [Building a Package](./API Guide/Building a Package.md)
-* [Pushing a Package](./API Guide/Pushing a Package.md)
-* [Installing a Package](./API Guide/Installing a Package.md)
-* [Reading a Package](./API Guide/Reading a Package.md)
-* [Working with a Bucket](./API Guide/Working with a Bucket.md)
+### Walkthrough
+
+* [Creating a Package](Walkthrough/Creating a Package.md)
+* [Building a Package](Walkthrough/Building a Package.md)
+* [Pushing a Package](Walkthrough/Pushing a Package.md)
+* [Installing a Package](Walkthrough/Installing a Package.md)
+* [Reading a Package](Walkthrough/Reading a Package.md)
+* [Working with a Bucket](Walkthrough/Working with a Bucket.md)
+
+### Advanced Features
+* [Materialization](Advanced%20Features/Materialization.md)
+
+----
+
+* [API Reference](API Reference.md)
+* [Glossary](Glossary.md)
+* [Contributing](CONTRIBUTING.md)
+* [Further reading](Further reading.md)
