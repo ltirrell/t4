@@ -1,8 +1,8 @@
 T4 has two different components:
-* a Python package, distributed via `pip`
-* a web catalog, deployed using [AWS CloudFormation](https://aws.amazon.com/cloudformation/)
+* A Python package, `t4`, distributed via `pip`
+* A web interface, the T4 Catalog, deployed using [AWS CloudFormation](https://aws.amazon.com/cloudformation/)
 
-You can use the `t4` package without standing up a catalog, but requires 
+If you have an already-provisioned catalog, only the Python package is needed.
 
 
 ## Installing the Python package
@@ -17,8 +17,6 @@ Note that `t4` requires Python 3.6 or higher.
 
 
 ## Deploying the catalog
-The Quilt T4 catalog is based on top of S3. We use [AWS CloudFormation](https://aws.amazon.com/cloudformation/) to provision the service.
-
 The following instructions use CloudFormation to install T4 on a bucket in your AWS account.
 
 * Log in to your AWS console
@@ -27,40 +25,28 @@ The following instructions use CloudFormation to install T4 on a bucket in your 
 
 <img src="../deployment/img/start.png" />
   
-1. Click "Upload a template to Amazon S3" and select `t4.yaml`, provided to
-you by Quilt
-1. Click Next
-1. Fill in Stack name and Parameters.
-    <br/>
-    <br/>
+* Click "Upload a template to Amazon S3" and select `t4.yaml`, provided to you by Quilt
+* Click Next
+* Fill in Stack name and Parameters
 
-    ![](../deployment/img/params.png)
+![](../deployment/img/params.png)
 
 > Carefully note parameter descriptions to avoid stack failure
-1. Click Next
-1. You can safely skip the Options screen (below) by clicking Next
-    <br/>
-    <br/>
 
-    ![](../deployment/img/skip.png)
+* Click Next
+* You can safely skip the Options screen (below) by clicking Next
 
-1. Acknowledge that CloudFormation may create IAM roles
-    <br/>
-    <br/>
+![](../deployment/img/skip.png)
 
-    ![](../deployment/img/finish.png)
+* Acknowledge that CloudFormation may create IAM roles
 
-1. Click Create (typically takes 30 minutes to complete)
+![](../deployment/img/finish.png)
 
-1. You should see `CREATE_COMPLETE` as the Status for your CloudFormation stack.
-Select the stack and open the Outputs tab. The Value of `CloudFrontDomain`
-is your CloudFront origin. Depending on your S3 bucket's [CORS policy](#pre-requisites)
-your web catalog is available at the CloudFront and/or the `CNAME` set
-by you in the following step.
-    <br/>
-    <br/>
+* Click Create (typically takes 30 minutes to complete)
 
-    ![](../deployment/img/outputs.png)
+* You should see `CREATE_COMPLETE` as the Status for your CloudFormation stack. Select the stack and open the Outputs tab. The Value of `CloudFrontDomain` is your CloudFront origin. Depending on your S3 bucket's [CORS policy](#pre-requisites) your web catalog is available at the CloudFront and/or the `CNAME` set by you in the following step.
 
-1. If desired, set a `CNAME` record with your DNS service that points to your CloudFrontDomain. The `CNAME` must also be present in your [CORS policy](#pre-requisites). Now users can access the T4 catalog at your custom
+![](../deployment/img/outputs.png)
+
+* If desired, set a `CNAME` record with your DNS service that points to your CloudFrontDomain. The `CNAME` must also be present in your [CORS policy](#pre-requisites). Now users can access the T4 catalog at your custom
 `CNAME`.
