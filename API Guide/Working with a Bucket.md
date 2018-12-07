@@ -61,4 +61,10 @@ b.put("my-dict.json", {"a": "b"}, meta={"how": "lazily"})
 b.put_dir("stuff", "/path/to/folder/with/stuff/", meta={"origin": "unknown"})
 ```
 
-Note that `set` operations on a `Package` are `put` operations on a `Bucket`. These operations support the same `meta`.
+Note that `set` operations on a `Package` are `put` operations on a `Bucket`.
+
+
+## Searching
+You can search for individual objects using `search`.
+
+TODO
