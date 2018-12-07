@@ -35,6 +35,11 @@ p = p.update({
 })
 ```
 
+Of course you can also delete entries:
+```python
+p.delete("bam.png")
+```
+
 
 ## Setting metadata
 
