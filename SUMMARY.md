@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+* [Installation](Installation.md)
 * [Quickstart](Quickstart.md)
 
 ### Walkthrough
