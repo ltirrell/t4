@@ -67,4 +67,32 @@ Note that `set` operations on a `Package` are `put` operations on a `Bucket`.
 ## Searching
 You can search for individual objects using `search`.
 
-TODO
+T4 supports content search:
+
+```bash
+$ python
+>>> b.search("thor")
+<<< ...all files containing the word "thor"...
+```
+
+As well as metadata search:
+
+```bash
+$ python
+>>> b.search("user_meta.name='thor'")
+<<< ...all files annotated {'name': 'thor'}...
+```
+
+Only a subset of the files in the bucket are indexed: `md` (Markdown) and `ipynb` (Jupyter) files by default. To modify which file types are searchable, populate a `.quilt/config.json` file in your S3 bucket looking something like this:
+
+```json
+{
+  "ipynb": true,
+  "md": true
+}
+```
+
+> There are currently some important limitations with search:
+> * Queries containing the tilde (~), forward slash (/), back slash, and angle bracket ({, }, (, ), [, ]) must be quoted. For example search for `'~aleksey'`, not `~aleksey`.
+> * The search index will only pick up objects written to S3 _after_ T4 was enabled on that bucket.
+> * Files over 10 MB in size may cause search to fail.

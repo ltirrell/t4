@@ -53,7 +53,7 @@ p = t4.Package.browse("username/packagename", registry="s3://name-of-your-bucket
 To learn how to introspect a package see the next section: [Inspecting A Package](Introspecting%20A%20Package.md).
 
 ## Versions
-As explained in the section ["Building a Package"](Building%20a%20Package.md)), individual packages are versioned using a _tophash_. Different packages with the same name but different data will have different tophashes.
+As explained in the section ["Building a Package"](Building%20a%20Package.md), individual packages are versioned using a _tophash_. Different packages with the same name but different data will have different tophashes.
 
 Use the `tophash` parameter to `install` or `browse` a specific version of a package.
 
