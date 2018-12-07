@@ -19,8 +19,7 @@ The following instructions use CloudFormation to install T4 on a bucket in your 
 1. Go to Services > CloudFormation > Create stack
     <br/>
     <br/>
-
-    ![](../deployment/img/start.png)
+    <img src="../deployment/img/start.png" width="400" />
   
 1. Click "Upload a template to Amazon S3" and select `t4.yaml`, provided to
 you by Quilt
