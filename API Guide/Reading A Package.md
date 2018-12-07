@@ -1,4 +1,4 @@
-In the sections ["Creating A Package""](./Creating A Package.md) and ["Installing A Package"](./Installing A Package), we saw how to create a package from scratch and how to download a package from somewhere else, respectively.
+In the sections ["Creating A Package""](Creating%20a%20Package.md) and ["Installing A Package"](./Installing A Package), we saw how to create a package from scratch and how to download a package from somewhere else, respectively.
 
 Once you have a package it's easy to introspect it. Suppose we have the following example package:
 

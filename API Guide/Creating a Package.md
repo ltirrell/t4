@@ -1,5 +1,6 @@
-Data in T4 is organized in terms of **packages**. A package is a logical group of files, directories, and metadata that are meaningful.
+## Setting data
 
+Data in T4 is organized in terms of **packages**. A package is a logical group of files, directories, and metadata that are meaningful.
 
 To create a new package in Python, start by creating a new `Package` object:
 
@@ -32,4 +33,31 @@ p = p.update({
     "baz.csv": "/path/to/baz", 
     "bam.png": "/path/to/bam"
 })
+```
+
+
+## Setting metadata
+
+Packages support **metadata**. Metadata can be set on any entry or directory in the package, as well as on the package itself.
+
+You can set metadata using the dedicated `set_meta` command.
+
+```python
+# set metadata on a file
+p.set_meta("foo.csv", {"filetype": "csv"})
+
+# set metadata on a path
+p.set_meta("stuff/", {"origin": "unknown"})
+
+# set metadata on a package
+p.set_meta("/", {"package-type": "demo"})
+```
+
+Alternatively, you can use the `meta` parameter, available on all of `set`, `set_dir`, and `update`, to set entry metadata at definition time.
+
+```python
+(p
+    .set("foo.csv", "foo.csv", meta={"filetype": "csv"})
+    .set_dir("stuff/", "stuff/", meta={"origin": "unknown"})
+)
 ```

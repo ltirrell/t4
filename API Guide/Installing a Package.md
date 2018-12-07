@@ -11,7 +11,7 @@ p = t4.Package.install(
 
 `install` starts by downloading the **package manifest**&mdash;essentially a `list` of things in the package. It then takes each file referenced by the package and downloads it to your `dest`.
 
-Once you `install` a remote package it becomes a local package, available in your local registry (for more on registries see ["Building A Package"](./Building A Package.md)).
+Once you `install` a remote package it becomes a local package, available in your local registry (for more on registries see ["Building A Package"](Building%20a%20Package.md)).
 
 To open a local package, use `browse`:
 
