@@ -21,20 +21,26 @@ T4 allows you to create, edit, and distribute groups of files like this one as a
 * **accessibility**&mdash;anyone with access to your T4 instance can browse, explore, download, and even reuse your data package
 
 ## Creating your own package
-Start by [installing the T4 Python client](./Installation.md).
 
-Then, let's create some example data.
-
-
-## OLD BELOW
-
-## Installation
-
-To get started, you will first need to [install the `t4` Python package](./Installation.md). Then can then import it into the environment:
+To get started, you will first need to [install the `t4` Python package](./Installation.md). Then import it:
 
 
 ```python
 import t4
+```
+
+For demo purposes we will use a simple made-up dataset tracking a hurricane in the 1851 Atlantic Ocean:
+
+```python
+import pandas as pd
+data = pd.DataFrame({
+    'id': ['AL011851']*5,
+    'name': ['Unnamed']*5,
+    'date': [f'1851-06-25 {hr}:00:00' for hr in ['00', '06', '12', '18', '21']],
+    'status_of_system': ['HU']*5,
+    'latitude': [28.0, 28.0, 28.0, 28.1, 28.2],
+    'longitude': [-94.8, -95.4, -96.0, -96.5, -96.8]
+})
 ```
 
 This script generates a history of Atlantic hurricanes in a `pandas` `DataFrame`:
