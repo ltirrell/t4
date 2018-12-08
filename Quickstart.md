@@ -109,109 +109,51 @@ p['storms/atlantic-storms.csv']()
 # outputs <pandas.DataFrame at ...>
 ```
 
-## Consuming packages
-
-So far we've seen how to create packages and how to consume resources inside of packages. Now let's look at how to consume the packages themselves.
+## Pushing a package
 
 Suppose that you've create a package and want to share it with the rest of your team. T4 makes this easy by providing you with a **catalog**. A T4 catalog sits on top of an S3 bucket and allows anyone with access to that bucket to see, push, and download packages in that bucket.
 
-To send a package to a catalog, use `push`.
+Note that this section, and the next, require a catalog you have access to.
+
+To make a package available on (and downloadable from) a catalog, use `push`, parameterized with the name of the package (a `username/packagename` pair) and the identifier for the S3 bucket you are pushing to:
 
 
 ```python
-p.push('example/package', f'{bucket_name}')
+p.push('example/package', 's3://your-bucket')
 ```
 
-`push` grabs your package and sends it and all of its data up to the catalog. Everyone with access to that catalog can now see and download this package and data from that catalog.
-
-Alternatively, you may wish to save a package locally (we call this the local catalog). This is `build`, which is a much faster operation because it doesn't necessitate moving data.
-
+Alternatively, you may wish to save a package locally. To do this, use `build`:
 
 ```python
 p.build('example/package')
 ```
 
 
-
-
-    '43f3816c2ac87ef3cf943c7bc5a6be69985fcac200cc47db4f9e3b741f9dbe24'
-
-
-
-To see a list of packages available locally or remotely, use `list_packages`:
-
+## Installing a package
+To see all the packages available on a catalog, use `list_packages`:
 
 ```python
-t4.list_packages()
+t4.list_packages('s3://your-bucket')
+# outputs ['example/package', 'foo/bar']
 ```
 
-
-
-
-    ['example/package', 'foo/bar']
-
-
+To download a package and all of its data from a remote catalog to a `dest` on your machine, `install` it.
 
 
 ```python
-t4.list_packages(bucket_name)
+p = t4.Package.install('example/package', 's3://your-bucket', dest='temp_folder/')
 ```
 
-
-
-
-    ['aics/pipeline',
-     'akarve/test',
-     'akave/t4test',
-     'ay/lmao-redux',
-     'dima/tmp2',
-     'eode/testing_package',
-     'example/package']
-
-
-
-To download a package and all of its data from a remote catalog, `install` it.
-
+You can also choose to download just the package **manifest** without downloading the data files it references. A package manifest is a simple JSON file that is independent of the actual package data, but stores pointers to and metadata about it. To get just the package manifest, use `browse`:
 
 ```python
-# to a temporary folder for demo purposes
-p = t4.Package.install('example/package', bucket_name, dest='temp/')
+p = t4.Package.browse('example/package', 's3://your-bucket')
 p
 ```
 
-
-    <t4.packages.Package at 0x117164f98>
-
-
-
+`browse` is particularly beneficial when you are working with large packages that you only need parts of at a time, and when working with packages containing many subpackages. In those cases you can `browse`, then `fetch`, to get data of interest:
 
 ```python
-!rm -rf temp/
-```
-
-You can also choose to download just the package **manifest** without downloading the data files it references. The manifest is a simple JSON file that is independent of the actual package data, but stores pointers to and metadata about it. To load a package from a local or remote catalog, use the extremely fast static `browse` method:
-
-
-```python
-p = t4.Package.browse('example/package', bucket_name)
-p
-```
-
-
-
-
-    <t4.packages.Package at 0x117168470>
-
-
-
-`browse` is particularly benefitial when you are working with large packages that you only need parts of at a time; and when working with packages containing many subpackages. In those cases you can `browse`, then `fetch` to get data of interest:
-
-
-```python
-p = t4.Package.browse('example/package', bucket_name)
+p = t4.Package.browse('example/package', 's3://your-bucket')
 p['resources'].fetch('temp/')
-```
-
-```python
-!rm -rf temp/
 ```
