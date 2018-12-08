@@ -20,8 +20,8 @@ T4 allows you to create, edit, and distribute groups of files like this one as a
 * **reproducibility**&mdash;data packages are immutable and persistent, ensuring continuous reproducibility
 * **accessibility**&mdash;anyone with access to your T4 instance can browse, explore, download, and even reuse your data package
 
-## Creating your own package
 
+## Before you begin
 To get started, you will first need to [install the `t4` Python package](./Installation.md). Then import it:
 
 
@@ -29,271 +29,40 @@ To get started, you will first need to [install the `t4` Python package](./Insta
 import t4
 ```
 
-For demo purposes we will use a simple made-up dataset tracking a hurricane in the 1851 Atlantic Ocean:
+For demo purposes we will use a small dataset tracking an 1851 hurricane in the Atlantic Ocean, which we'll persist to disk immediately:
 
 ```python
 import pandas as pd
 data = pd.DataFrame({
     'id': ['AL011851']*5,
     'name': ['Unnamed']*5,
-    'date': [f'1851-06-25 {hr}:00:00' for hr in ['00', '06', '12', '18', '21']],
+    'date': [f'1851-06-25 {hr}:00:00' for hr in 
+             ['00', '06', '12', '18', '21']],
     'status_of_system': ['HU']*5,
     'latitude': [28.0, 28.0, 28.0, 28.1, 28.2],
     'longitude': [-94.8, -95.4, -96.0, -96.5, -96.8]
 })
-```
-
-This script generates a history of Atlantic hurricanes in a `pandas` `DataFrame`:
-
-
-```python
-atlantic_storms.head()
+data.to_csv("atlantic-storm.csv")
 ```
 
 
+## Creating a package
 
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>name</th>
-      <th>date</th>
-      <th>record_identifier</th>
-      <th>status_of_system</th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>maximum_sustained_wind_knots</th>
-      <th>maximum_pressure</th>
-      <th>34_kt_ne</th>
-      <th>...</th>
-      <th>34_kt_sw</th>
-      <th>34_kt_nw</th>
-      <th>50_kt_ne</th>
-      <th>50_kt_se</th>
-      <th>50_kt_sw</th>
-      <th>50_kt_nw</th>
-      <th>64_kt_ne</th>
-      <th>64_kt_se</th>
-      <th>64_kt_sw</th>
-      <th>64_kt_nw</th>
-    </tr>
-    <tr>
-      <th>index</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>AL011851</td>
-      <td>UNNAMED</td>
-      <td>1851-06-25 00:00:00</td>
-      <td>NaN</td>
-      <td>HU</td>
-      <td>28.0</td>
-      <td>-94.8</td>
-      <td>80</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>AL011851</td>
-      <td>UNNAMED</td>
-      <td>1851-06-25 06:00:00</td>
-      <td>NaN</td>
-      <td>HU</td>
-      <td>28.0</td>
-      <td>-95.4</td>
-      <td>80</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>AL011851</td>
-      <td>UNNAMED</td>
-      <td>1851-06-25 12:00:00</td>
-      <td>NaN</td>
-      <td>HU</td>
-      <td>28.0</td>
-      <td>-96.0</td>
-      <td>80</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>AL011851</td>
-      <td>UNNAMED</td>
-      <td>1851-06-25 18:00:00</td>
-      <td>NaN</td>
-      <td>HU</td>
-      <td>28.1</td>
-      <td>-96.5</td>
-      <td>80</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>AL011851</td>
-      <td>UNNAMED</td>
-      <td>1851-06-25 21:00:00</td>
-      <td>L</td>
-      <td>HU</td>
-      <td>28.2</td>
-      <td>-96.8</td>
-      <td>80</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 21 columns</p>
-</div>
-
-
-
-Which we'll also save to disk.
-
+To initialize an in-memory data package, use the `Package` constructor:
 
 ```python
-local_filepath = f"{local_folder}atlantic-storms.csv"
-atlantic_storms.to_csv(local_filepath)
-```
-
-## Creating packages
-
-The core construct in T4 is the **data package**. A data package is a collection of individual files which are meaningful when considered as a whole. A data package includes raw data files, metadata describing the raw data files, and anything else you think is meaningful.
-
-Data packages make it easy to share data assets across the team. We'll use the HURDAT dataset to demonstrate how they work.
-
-To initialize an in-memory data package:
-
-
-```python
+# define a package
 p = t4.Package()
 ```
 
-To add a file to a package, use `set`:
-
-
-```python
-p.set('storms/atlantic-storms.csv', local_filepath)
-```
-
-
-
-
-    <t4.packages.Package at 0x10db752b0>
-
-
-
-To capture everything in a folder, use `set_dir`:
-
+Use `set` to add a file to a package, or `set_dir` to add an entire folder all at once:
 
 ```python
+# add a file
+p.set('storms/atlantic-storm.csv', "atlantic-storm.csv")
+# add a folder
 p.set_dir('resources/', './')
 ```
-
-
-
-
-    <t4.packages.Package at 0x10db752b0>
-
-
 
 You can point a package key at any local file or S3 key.
 
@@ -301,59 +70,43 @@ Packages support metadata on data nodes (directories too):
 
 
 ```python
-p.set('storms/atlantic-storms.csv', local_filepath, meta={'side':'atlantic'})
+# define metadata at set time
+p.set('storms/atlantic-storm.csv', 'atlantic-storm.csv', meta={'ocean':'atlantic'})
+
+# define it later, uses dictionary access, from the next section
+p['storms']['atlantic-storms.csv'].set_meta({'ocean': 'atlantic'})
 ```
-
-
-
-
-    <t4.packages.Package at 0x10db752b0>
-
-
 
 Packages mimic `dict` objects in their behavior. So to introspect a package, key into it using a path fragment:
 
-
-```python
-p['storms']
+```bash
+p['storms']  # outputs just "atlantic-storms.csv"
 ```
 
 
-
-
-    <t4.packages.Package at 0x11f851b70>
-
-
-
-You can interact with directories and files inside of a pacakge once you're at their key. For example, use `get_meta` to get the metadata:
+You can interact with directories and files inside of a package once you're at their key. For example, use `get_meta` to get the metadata:
 
 
 ```python
 p['storms/atlantic-storms.csv'].get_meta()
+# outputs {'side': 'atlantic'}
 ```
-
-
-
-
-    {'side': 'atlantic'}
-
 
 
 Use `fetch` to download the data to a file or a directory:
 
 
 ```python
-p['storms/atlantic-storms.csv'].fetch('storms.csv')
+p['storms/atlantic-storms.csv'].fetch('another-copy-of-storms.csv')
 ```
 
-And finally, `deserialize` to load a piece of data directory into memory as a Python object (this only works on subsect of objects and object types right now):
+
+You can also load certain types of entries directly into memory:
 
 
 ```python
-# b = t4.Bucket(bucket_name)
-# b.put('atlantic_storms.parquet', atlantic_storms)
-# d = t4.Package().set('atlantic_storms', f'{bucket_name}/atlantic_storms.parquet')['atlantic_storms']\
-#         .deserialize()
+p['storms/atlantic-storms.csv']()
+# outputs <pandas.DataFrame at ...>
 ```
 
 ## Consuming packages
