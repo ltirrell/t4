@@ -1,6 +1,32 @@
-TODO: actually write this.
+This page is a five-minute introduction to T4.
 
-This page is a five-minute overview of T4.
+## Data packages
+The core concept in T4 is that of a **data package**. A data package is a logically self contained group of files which provide some unit of value.
+
+For example, suppose that you are a data scientist analyzing October sales at an apparel store. Your code might depend on the following set of files:
+
+```bash
+october-2018-clothing-sales
+    sales-snapshot-11-01.parquet
+    sales-snapshot-11-02.parquet
+    ...
+    sales-snapshot-11-31.parquet    
+```
+
+T4 allows you to create, edit, and distribute groups of files like this one as a single cohesive group&mdash;a data package. This gives your data a host of useful properties:
+
+* **modularization**&mdash;data packages allow you express your data dependencies the same way you express your code dependencies: in groups of functional, well-documented modules
+* **versioning**&mdash;data packages provide version control for data
+* **reproducibility**&mdash;data packages are immutable and persistent, ensuring continuous reproducibility
+* **accessibility**&mdash;anyone with access to your T4 instance can browse, explore, download, and even reuse your data package
+
+## Creating your own package
+Start by [installing the T4 Python client](./Installation.md).
+
+Then, let's create some example data.
+
+
+## OLD BELOW
 
 ## Installation
 
