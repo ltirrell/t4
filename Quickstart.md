@@ -115,16 +115,12 @@ So far we've seen how to create packages and how to consume resources inside of 
 
 Suppose that you've create a package and want to share it with the rest of your team. T4 makes this easy by providing you with a **catalog**. A T4 catalog sits on top of an S3 bucket and allows anyone with access to that bucket to see, push, and download packages in that bucket.
 
-To send a package to a catalog, use `push` (note: the large number of progress bars are a bug that we are working to fix):
+To send a package to a catalog, use `push`.
 
 
 ```python
 p.push('example/package', f'{bucket_name}')
 ```
-
-    <t4.packages.Package at 0x11f8516a0>
-
-
 
 `push` grabs your package and sends it and all of its data up to the catalog. Everyone with access to that catalog can now see and download this package and data from that catalog.
 
