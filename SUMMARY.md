@@ -19,6 +19,5 @@
 ### References
 
 * [API Reference](API Reference.md)
-* [Glossary](Glossary.md)
 * [Contributing](CONTRIBUTING.md)
 * [Further Reading](Further Reading.md)
