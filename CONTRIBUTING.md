@@ -44,8 +44,7 @@ $ pytest
 When your branch is ready, you may run `tox` or `detox` to test a new install. To additionally test dependencies use `detox --refresh`, which will reset the environment it creates.
 
 ## Local catalog development
-### Environment
-
+For information on local catalog development see [here](https://github.com/quiltdata/t4/tree/master/catalog/docs).
 
 ## License
 
