@@ -7,9 +7,8 @@ Unsure about something? To get support, check out our [Slack channel](https://qu
 
 Found a bug? File it in our [GitHub issues](https://github.com/quiltdata/t4/issues).
 
-## Local package development
-### Cloning
-To work on the `t4` Python package locally you will first need to clone the repository.
+## Cloning
+To work on `t4` you will first need to clone the repository.
 
 ```bash
 $ git clone https://github.com/quiltdata/t4
@@ -22,6 +21,7 @@ $ cd t4
 $ git checkout -B new-branch-name
 ```
 
+## Local package development
 ### Environment
 Use `pip` to install `t4` locally (including development dependencies):
 
@@ -32,7 +32,7 @@ $ pip install -e .[extra]
 This will create an [editable install](https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs) of `t4`, allowing you to modify the code and test your changes right away.
 
 ### Testing
-All new code contributions are expected to have complete test coverage, and to pass all preexisting tests.
+All new code contributions are expected to have complete unit test coverage, and to pass all preexisting tests.
 
 Use `pytest` to test your changes during normal development. To run `pytest` on the entire codebase:
 
@@ -41,8 +41,11 @@ $ cd api/python/tests
 $ pytest
 ```
 
-When your branch is ready, run 'tox' (single) or 'detox' (concurrent) to test a new install.
-   'detox  --refresh'   will reset the environment it creates, for testing dependencies etc.
+When your branch is ready, you may run `tox` or `detox` to test a new install. To additionally test dependencies use `detox --refresh`, which will reset the environment it creates.
+
+## Local catalog development
+### Environment
+
 
 ## License
 
