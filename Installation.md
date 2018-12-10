@@ -7,13 +7,19 @@ If you have an already-provisioned catalog, only the Python package is needed.
 
 ## Installing the Python package
 
-Install the latest stable release of the T4 Python library with `pip`:
+T4 is currently in pre-release alpha. To install the current T4 `master`, first ensure that you are in a Python 3.6 environment, then run:
 
 ```bash
-pip install t4
+$ pip install git+https://github.com/quiltdata/t4.git#subdirectory=api/python
 ```
 
-Note that `t4` requires Python 3.6 or higher.
+In order to interface with a remote catalog you will also need valid AWS credentials. If this is your first time using AWS, ensure that you have the AWS CLI installed (`pip install aws-cli`), then run the following to store the IAM credentials you wish to use with T4:
+
+```bash
+$ aws configure
+```
+
+If you are already using AWS IAM you may reuse your credentials for T4. Alternatively you can create a Quilt-specific [profile](https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html).
 
 
 ## Deploying the catalog
