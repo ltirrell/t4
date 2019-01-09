@@ -21,7 +21,7 @@ from .data_transfer import (
 from .exceptions import PackageException
 from .util import (
     QuiltException, BASE_PATH, fix_url, get_local_registry, get_remote_registry,
-    parse_file_url, parse_s3_url, validate_package_name, quiltignore_filter
+    make_s3_url, parse_file_url, parse_s3_url, validate_package_name, quiltignore_filter
 )
 
 
@@ -568,9 +568,7 @@ class Package(object):
             for obj in objects:
                 if not obj['IsLatest']:
                     continue
-                obj_url = 's3://%s/%s' % (src_bucket, quote(obj['Key']))
-                if obj['VersionId'] != 'null':  # Yes, 'null'
-                    obj_url += '?versionId=%s' % quote(obj['VersionId'])
+                obj_url = make_s3_url(src_bucket, obj['Key'], obj.get('VersionId'))
                 entry = PackageEntry([obj_url], None, None, None)
                 logical_key = obj['Key'][len(src_key):]
                 # TODO: Warn if overwritting a logical key?
@@ -749,6 +747,9 @@ class Package(object):
         Returns:
             self
         """
+        if not logical_key or logical_key.endswith('/'):
+            raise QuiltException("Invalid logical_key: %r; cannot be a directory" % logical_key)
+
         if isinstance(entry, (string_types, getattr(os, 'PathLike', str))):
             url = fix_url(str(entry))
             size, orig_meta, version = get_size_and_meta(url)
@@ -756,9 +757,9 @@ class Package(object):
             # Deterimine if a new version needs to be appended.
             parsed_url = urlparse(url)
             if parsed_url.scheme == 's3':
-                _, _, current_version = parse_s3_url(parsed_url)
+                bucket, key, current_version = parse_s3_url(parsed_url)
                 if not current_version and version:
-                    url += '?versionId=%s' % quote(version)
+                    url = make_s3_url(bucket, key, version)
             entry = PackageEntry([url], size, None, orig_meta)
         elif isinstance(entry, PackageEntry):
             entry = entry._clone()

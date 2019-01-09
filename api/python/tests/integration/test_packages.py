@@ -896,3 +896,14 @@ def test_reduce():
         ('as/df', pkg['as/df']),
         ('as/qw', pkg['as/qw'])
     ]
+
+def test_invalid_key():
+    pkg = Package()
+    with pytest.raises(QuiltException):
+        pkg.set('', LOCAL_MANIFEST)
+    with pytest.raises(QuiltException):
+        pkg.set('foo/', LOCAL_MANIFEST)
+    with pytest.raises(QuiltException):
+        pkg.set('foo', './')
+    with pytest.raises(QuiltException):
+        pkg.set('foo', os.path.dirname(__file__))
