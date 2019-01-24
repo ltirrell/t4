@@ -456,7 +456,33 @@ def get_credentials(arn):
     response = session.get(
         "{url}/api/auth/get_credentials".format(
             url=get_registry_url()
-        ),
-        data=json.dumps({'arn': arn})
+        )
     )
     return response.json()
+
+def list_roles():
+    session = get_session()
+    response = session.get(
+        "{url}/api/roles/list".format(
+            url=get_registry_url()
+        )
+    )
+    return response.json()
+
+def create_role(name, arn):
+    session = get_session()
+    data = {
+        'name': name,
+        'arn': arn
+    }
+    response = session.post(
+        "{url}/api/roles/edit".format(
+            url=get_registry_url()
+        ),
+        data=json.dumps(data)
+    )
+    return response
+
+def set_role(username, role_name):
+    session = get_session()
+    response = session.post()
