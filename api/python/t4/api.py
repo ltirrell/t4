@@ -451,7 +451,7 @@ def config(*autoconfig_url, **config_values):
 
     return HeliumConfig(CONFIG_PATH, local_config)
 
-def get_credentials(arn):
+def get_credentials():
     session = get_session()
     response = session.get(
         "{url}/api/auth/get_credentials".format(
@@ -483,6 +483,28 @@ def create_role(name, arn):
     )
     return response
 
+def delete_role(name):
+    session = get_session()
+    params = {
+        'name': name
+    }
+    response = session.post(
+        "{url}/api/roles/edit".format(
+            url=get_registry_url()
+        ),
+        data=json.dumps(params)
+    )
+    return response
+
 def set_role(username, role_name):
     session = get_session()
-    response = session.post()
+    params = {
+        'username': username,
+        'role': role_name
+    }
+    response = session.post(
+        "{url}/api/users/attach_role".format(
+            url=get_registry_url()),
+            data=json.dumps(params)
+        )
+    return response

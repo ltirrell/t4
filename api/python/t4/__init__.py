@@ -15,7 +15,8 @@ from .api import (
     delete_package,
     get_credentials,
     list_roles,
-    create_role
+    create_role,
+    set_role
 )
 
 from .packages import Package
